@@ -1,3 +1,5 @@
+![runreckon — Score an agent run](banner.svg)
+
 # runreckon
 
 **Score how an agent executed a run, not just whether it finished.**

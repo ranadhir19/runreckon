@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="runreckon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1220"/><stop offset="100%" stop-color="#14263F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="360" fill="url(#bg)"/>
+  <rect x="64" y="72" width="72" height="6" fill="#F5B544"/>
+  <text x="64" y="155" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF">runreckon</text>
+  <text x="64" y="215" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#CBD5E1"><tspan x="64" dy="0">Score how an agent executed a run,</tspan><tspan x="64" dy="38">not just whether it finished.</tspan></text>
+  <rect x="64" y="285" width="760" height="4" fill="#2DD4BF"/>
+  
+  <path d="M 905 255 C 970 255 965 105 1035 105 C 1090 105 1095 200 1150 200" stroke="#2DD4BF" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="1 0"/>
+  <circle cx="905" cy="255" r="14" fill="#0B1220" stroke="#2DD4BF" stroke-width="6"/>
+  <circle cx="1035" cy="105" r="14" fill="#0B1220" stroke="#2DD4BF" stroke-width="6"/>
+  <circle cx="1150" cy="200" r="14" fill="#F5B544" stroke="#F5B544" stroke-width="4"/>
+  <g stroke="#F5B544" stroke-width="6" stroke-linecap="round"><line x1="1180" y1="260" x2="1180" y2="110"/></g>
+  <path d="M 1180 110 L 1225 125 L 1180 142 Z" fill="#F5B544"/>
+</svg>
