@@ -1,0 +1,52 @@
+name: "runreckon"
+description: "Score a recorded agent run against its task spec — tool selection, argument validity, step economy, error recovery, policy compliance, cost — and fail the step when execution quality regresses."
+author: "Ranadhir Ghosh"
+branding:
+  icon: "check-circle"
+  color: "green"
+inputs:
+  trace:
+    description: "Path to the JSONL trace of the agent run to score."
+    required: true
+  spec:
+    description: "Path to the task spec JSON the run is scored against."
+    required: true
+  min-score:
+    description: "Minimum composite score (0-1) required to pass."
+    required: false
+    default: "0.75"
+  format:
+    description: "Scorecard format: text or json."
+    required: false
+    default: "text"
+  output:
+    description: "Optional file to write the scorecard to."
+    required: false
+    default: ""
+  fail-on-policy:
+    description: "Fail the step on any policy violation, regardless of score."
+    required: false
+    default: "true"
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Install runreckon
+      shell: bash
+      run: pip install "git+https://github.com/ranadhir19/runreckon.git"
+    - name: Score the run
+      shell: bash
+      run: |
+        ARGS=(score "${{ inputs.trace }}" --spec "${{ inputs.spec }}"
+              --min-score "${{ inputs.min-score }}" --format "${{ inputs.format }}")
+        if [ "${{ inputs.fail-on-policy }}" != "true" ]; then
+          ARGS+=(--no-fail-on-policy)
+        fi
+        if [ -n "${{ inputs.output }}" ]; then
+          runreckon "${ARGS[@]}" | tee "${{ inputs.output }}"
+        else
+          runreckon "${ARGS[@]}"
+        fi
