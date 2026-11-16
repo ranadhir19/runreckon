@@ -94,6 +94,12 @@ Two design rules:
   the point: an unmeasured judge is a hope, a measured one is an
   instrument with known error.
 
+This calibration is a disclosure about runreckon's own optional
+judge, printed so its verdicts are never taken on faith. Systematic
+grader validation — measuring any grader against labelled data and
+auditing the task suites it scores — is evalcrucible's job, not
+runreckon's.
+
 ## The evaluator evaluates itself
 
 runreckon ships a fault-injection self-test. It takes clean traces that
@@ -154,12 +160,11 @@ See [docs/action.md](docs/action.md) for inputs and a fuller workflow.
 
 ## How this differs from evalcrucible
 
-[evalcrucible](https://github.com/ranadhir19/evalcrucible) audits the
-*benchmark*: are your tasks, gold answers, and graders themselves
-trustworthy? runreckon audits the *run*: given a task spec you already
-trust, did this agent's execution behave? Different layer, shared
-conviction — an evaluation you have not measured is a claim, not a
-result.
+[evalcrucible](https://github.com/ranadhir19/evalcrucible) is the
+grader tool: it validates graders against labelled data and audits
+static (prompt → gold) task suites, so the benchmark itself can be
+trusted. runreckon is the eval tool: given a task spec you already
+trust, it scores how an agent executed a recorded run.
 
 ## Limits
 
