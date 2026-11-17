@@ -67,6 +67,10 @@ class JudgeTests(unittest.TestCase):
         self.assertGreaterEqual(cal["kappa"], 0.5)
         self.assertEqual(cal["confusion"]["fp"], 1)
         self.assertEqual(cal["confusion"]["fn"], 1)
+        # tp=5 of 6 gold-grounded, fp=1: precision and recall are both
+        # 5/6 — reported separately because in general they diverge.
+        self.assertAlmostEqual(cal["precision"], 5 / 6, places=3)
+        self.assertAlmostEqual(cal["recall"], 5 / 6, places=3)
 
     def test_judge_report_carries_calibration(self):
         trace, spec = grounded_trace("Volume was 1.32 million.",

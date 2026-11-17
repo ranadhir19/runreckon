@@ -12,10 +12,13 @@ kinds of evidence:
 2. **Judge layer** (off by default). A pluggable judge callable may
    assess the answer against the evidence, but a judge is only trusted
    as far as it has been measured: whenever a judge is enabled, its
-   agreement and Cohen's kappa on the bundled labelled calibration set
-   are computed and printed on the scorecard next to its verdict. The
-   judge's verdict is reported alongside the deterministic score, never
-   blended into it — blending would hide disagreement between the two.
+   agreement, Cohen's kappa, and per-class precision and recall on the
+   bundled labelled calibration set are computed and printed on the
+   scorecard next to its verdict. Agreement alone can hide a judge
+   that is strong on one class and weak on the other; the split
+   cannot. The judge's verdict is reported alongside the deterministic
+   score, never blended into it — blending would hide disagreement
+   between the two.
 """
 
 from __future__ import annotations
@@ -195,8 +198,12 @@ def calibrate(judge) -> dict:
     p_gold = (tp + fn) / n
     p_chance = p_judge * p_gold + (1 - p_judge) * (1 - p_gold)
     kappa = (agreement - p_chance) / (1 - p_chance) if p_chance < 1 else 1.0
+    precision = tp / (tp + fp) if (tp + fp) else 1.0
+    recall = tp / (tp + fn) if (tp + fn) else 1.0
     return {"items": n, "agreement": round(agreement, 3),
             "kappa": round(kappa, 3),
+            "precision": round(precision, 3),
+            "recall": round(recall, 3),
             "confusion": {"tp": tp, "fp": fp, "tn": tn, "fn": fn}}
 
 

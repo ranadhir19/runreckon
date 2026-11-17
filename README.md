@@ -87,11 +87,13 @@ Two design rules:
 - **Judges are optional and measured.** Groundedness can also be
   assessed by a pluggable judge (`--judge module:function`, or the
   bundled deterministic stand-in). A judge is only trusted as far as it
-  has been measured: whenever one is enabled, its agreement and Cohen's
-  kappa on a bundled labelled calibration set are printed on the
-  scorecard next to its verdict — reported alongside the deterministic
-  score, never blended into it. The stand-in's measured calibration:
-  agreement 0.833, kappa 0.667 on 12 items, with two instructive
+  has been measured: whenever one is enabled, its agreement, Cohen's
+  kappa, and per-class precision and recall on a bundled labelled
+  calibration set are printed on the scorecard next to its verdict —
+  reported alongside the deterministic score, never blended into it.
+  The stand-in's measured calibration:
+  agreement 0.833, kappa 0.667, precision 0.833, recall 0.833 on
+  12 items, with two instructive
   failures (a heavy-paraphrase miss, a negation false-pass). That is
   the point: an unmeasured judge is a hope, a measured one is an
   instrument with known error.

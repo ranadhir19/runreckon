@@ -96,7 +96,8 @@ class Scorecard:
                 f"judge ({self.judge['judge']}): grounded="
                 f"{self.judge['verdict']['grounded']} — {self.judge['verdict']['rationale']}; "
                 f"calibration on {cal['items']} labelled items: agreement "
-                f"{cal['agreement']:.3f}, kappa {cal['kappa']:.3f} "
+                f"{cal['agreement']:.3f}, kappa {cal['kappa']:.3f}, "
+                f"precision {cal['precision']:.3f}, recall {cal['recall']:.3f} "
                 "(reported alongside the deterministic score, never blended)")
         else:
             lines.append("judge: not configured — deterministic scoring only")
