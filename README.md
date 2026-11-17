@@ -97,6 +97,15 @@ Two design rules:
   failures (a heavy-paraphrase miss, a negation false-pass). That is
   the point: an unmeasured judge is a hope, a measured one is an
   instrument with known error.
+  A real model judge has since been measured on the same 12 items:
+  Claude Opus 5.5 (hosted serving endpoint), run externally on
+  2026-11-16, agreed with gold on all 12 — agreement, kappa,
+  precision and recall all 1.000. Read that as a smoke calibration,
+  not a measurement: at 12 items the Wilson interval is
+  0.758–1.000, too wide to separate this judge from much weaker
+  ones. The same run validated the judge properly on
+  evalcrucible's frozen 150-item set (ACCEPT, 99.3% / 0.986);
+  this 12-item line is a cross-check, not the evidence.
 
 This calibration is a disclosure about runreckon's own optional
 judge, printed so its verdicts are never taken on faith. Systematic
